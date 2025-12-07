@@ -1,0 +1,490 @@
+{
+  "Uuid": "ac3c4f15-64f4-4a25-a704-f47ab86aa446",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "CADFamPlacement",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Nodes.DSModelElementSelection, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "52c8cb73-f652-40a4-afbe-ea3633c08eb8-0012a28f"
+      ],
+      "Id": "21d5c29575c24fa9afc14da0dd8a6fa0",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b840404104784578938394d0cb9bdc4f",
+          "Name": "Element",
+          "Description": "The selected elements.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select a model element from the document."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "02c53de451814ce9a8854ca9723f70c0",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "f15371daf09e481a8601ccebcb085f28",
+          "Name": "importInstance",
+          "Description": "Input the ImportInstance to convert to curves.\n\nImportInstance",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2b86b13e901e46859c8ecda449af13f7",
+          "Name": "layerNames",
+          "Description": "Input the layer names for conversion. Leave unconnected to convert all layers. Names are case-sensitive.\n\nstring[]\nDefault value : []",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3f29a48d158649d9b7be860114b92961",
+          "Name": "createModelCurves",
+          "Description": "Set to True to convert into Revit Model Lines.\n\nbool\nDefault value : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7b156eacbf7d4264982d336da4a7af45",
+          "Name": "lineStyleMap",
+          "Description": "Input the LineStyle name to map to each layer. Longest lacing is used by default.\n\nstring[]\nDefault value : []",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e1f08ad3cf694c0d9f691ec45580beb5",
+          "Name": "Curve[][]",
+          "Description": "Curve[][]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7459379c65d94f66a82fbee837e3c699",
+          "Name": "layerKeys[]",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "CAD.CurvesFromCADLayers@Revit.Elements.ImportInstance,string[],bool,string[]",
+      "Replication": "Auto",
+      "Description": "Extracts curves from a CAD link or import by layer name. Enter LineStyle names to map to each layer during conversion.\r\rThe node is optimized to convert curve types that typically fail when using Dynamo Element.Curves node or Revit Explode.\r\rVisit bimorph.com/bimorph-nodes for support.\n\nCAD.CurvesFromCADLayers (importInstance: ImportInstance, layerNames: string[] = [], createModelCurves: bool = false, lineStyleMap: string[] = []): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "Id": "e055120bffb34953929bceb187a437ee",
+      "NodeType": "CodeBlockNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "2600fd4e17014d5f832932b981f60ace",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly",
+      "Code": "\"x-balcony$0$100_Balcony Ellipse\";"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "9e957efbb40f442688dee6def9fb3e22",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "e352e74387a14f29b18bbd93f570a0cb",
+          "Name": "string",
+          "Description": "String to search in\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4a8033a921eb473fad06dfd50a3eff35",
+          "Name": "searchFor",
+          "Description": "Substring to search for\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d5ecd4ccd0cc4fdea647eb0bc906b2c2",
+          "Name": "ignoreCase",
+          "Description": "Whether or not comparison takes case into account\n\nbool\nDefault value : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "182056cb37a049d3b9c803a0ccedcc74",
+          "Name": "bool",
+          "Description": "Whether the string contains the substring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "DSCore.String.Contains@string,string,bool",
+      "Replication": "Auto",
+      "Description": "Determines if the given string contains the given substring.\n\nString.Contains (string: string, searchFor: string, ignoreCase: bool = false): bool"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "Id": "1e555c4a264849f19203a2e70a7b0cff",
+      "NodeType": "CodeBlockNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "7d6bebe327194521ab74991ed159ef37",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly",
+      "Code": "\"Arc\";"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.FromObject, CoreNodeModels",
+      "Id": "d02b550e6ae7455d9c50e95829baa551",
+      "NodeType": "ExtensionNode",
+      "Inputs": [
+        {
+          "Id": "11e6569903194e9aa09598c271e61786",
+          "Name": "object",
+          "Description": "Object to be serialized",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "709e5f579e4c4ac992e5c5080de2e3cc",
+          "Name": "string",
+          "Description": "String representation of the object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Converts an object to a string representation"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "9b0f79d3e67a41f08a35cdc8fb5a0503",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "e72da687ff874640b66274067ecdbe3c",
+          "Name": "list",
+          "Description": "List to filter.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "678e3f2c8d9a48aba3f18c90df671a09",
+          "Name": "mask",
+          "Description": "List of booleans representing a mask.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7365674db67749a3bd166d2dcef55f29",
+          "Name": "in",
+          "Description": "Items whose mask index is true.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "011f5e539e8d495382dd0a79cf8e7711",
+          "Name": "out",
+          "Description": "Items whose mask index is false.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "DSCore.List.FilterByBoolMask@var[]..[],var[]..[]",
+      "Replication": "Auto",
+      "Description": "Filters a sequence by looking up corresponding indices in a separate list of booleans.\n\nList.FilterByBoolMask (list: var[]..[], mask: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "04622f1d823e44858764fd0925c7fac0",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "29f864b8e2c0402a970f907813ae6b14",
+          "Name": "arc",
+          "Description": "Autodesk.DesignScript.Geometry.Arc",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "193a558b19474ef8a2af4931cfc5e04e",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Arc.CenterPoint",
+      "Replication": "Auto",
+      "Description": "The center point of the arc\n\nArc.CenterPoint: Point"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "b840404104784578938394d0cb9bdc4f",
+      "End": "f15371daf09e481a8601ccebcb085f28",
+      "Id": "51cd82538a524a5aae4089fb5d024eac",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "e1f08ad3cf694c0d9f691ec45580beb5",
+      "End": "11e6569903194e9aa09598c271e61786",
+      "Id": "0d82a413e9bb4516a6c7d9d5d528f0fe",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "e1f08ad3cf694c0d9f691ec45580beb5",
+      "End": "e72da687ff874640b66274067ecdbe3c",
+      "Id": "0b8a73e7fdaa4ffaae9f86bcea956c5d",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "2600fd4e17014d5f832932b981f60ace",
+      "End": "2b86b13e901e46859c8ecda449af13f7",
+      "Id": "89a54359b5bf4565b3f0856b8d1378ed",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "182056cb37a049d3b9c803a0ccedcc74",
+      "End": "678e3f2c8d9a48aba3f18c90df671a09",
+      "Id": "f91897660f374ea3ac3c146e5a210f8d",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "7d6bebe327194521ab74991ed159ef37",
+      "End": "4a8033a921eb473fad06dfd50a3eff35",
+      "Id": "76c485eb311247a6a15661a0b1531665",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "709e5f579e4c4ac992e5c5080de2e3cc",
+      "End": "e352e74387a14f29b18bbd93f570a0cb",
+      "Id": "90a78e756566432caef103f3e2ed486b",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "7365674db67749a3bd166d2dcef55f29",
+      "End": "29f864b8e2c0402a970f907813ae6b14",
+      "Id": "a6beb14ffbfa4b56849ec622f4773cee",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "bimorphNodes",
+      "Version": "5.1.3",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "02c53de451814ce9a8854ca9723f70c0"
+      ]
+    }
+  ],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.19",
+      "Data": {}
+    },
+    {
+      "ExtensionGuid": "DFBD9CC0-DB40-457A-939E-8C8555555A9D",
+      "Name": "Generative Design",
+      "Version": "6.1",
+      "Data": {}
+    }
+  ],
+  "Author": "",
+  "Linting": {
+    "activeLinter": "None",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.19.3.6394",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "_Background Preview",
+      "EyeX": -337583.921875,
+      "EyeY": -634292.625,
+      "EyeZ": -135403.1875,
+      "LookX": 259328.640625,
+      "LookY": 637572.25,
+      "LookZ": -93415.2109375,
+      "UpX": -0.92353314161300659,
+      "UpY": 0.19080853462219238,
+      "UpZ": 0.33268406987190247
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Id": "21d5c29575c24fa9afc14da0dd8a6fa0",
+        "Name": "Select Model Element",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 310.0,
+        "Y": 278.0
+      },
+      {
+        "Id": "02c53de451814ce9a8854ca9723f70c0",
+        "Name": "CAD.CurvesFromCADLayers",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 706.0,
+        "Y": 329.0
+      },
+      {
+        "Id": "e055120bffb34953929bceb187a437ee",
+        "Name": "Code Block",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 201.0,
+        "Y": 493.0
+      },
+      {
+        "Id": "9e957efbb40f442688dee6def9fb3e22",
+        "Name": "String.Contains",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1349.6363611380073,
+        "Y": 570.904699679914
+      },
+      {
+        "Id": "1e555c4a264849f19203a2e70a7b0cff",
+        "Name": "Code Block",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1067.9388534672466,
+        "Y": 604.07620144342593
+      },
+      {
+        "Id": "d02b550e6ae7455d9c50e95829baa551",
+        "Name": "String from Object",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1063.0830969060471,
+        "Y": 471.5115898133725
+      },
+      {
+        "Id": "9b0f79d3e67a41f08a35cdc8fb5a0503",
+        "Name": "List.FilterByBoolMask",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1691.5503915531792,
+        "Y": 337.20284196024215
+      },
+      {
+        "Id": "04622f1d823e44858764fd0925c7fac0",
+        "Name": "Arc.CenterPoint",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 2041.321787580589,
+        "Y": 380.86209297084548
+      }
+    ],
+    "Annotations": [],
+    "X": 111.30370405841029,
+    "Y": 174.0600012697036,
+    "Zoom": 0.50897892427221336
+  }
+}
